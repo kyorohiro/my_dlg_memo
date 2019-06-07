@@ -33,15 +33,6 @@ class Board:
     def setState(self, row:int, col:int, v:BoardState):
         self.cont[self.calcIndex(row,col)] = v
 
-    @classmethod
-    def extractRowCol(self, value:str)->tuple:
-        buffer:bytes = value.encode("utf-8")
-        col = buffer[0] - 65
-        row = buffer[1] - 48
-        if(len(buffer)>=2):
-            row = row * 10 + (buffer[1] - 48)
-        return (row, col)
-
     def __str__(self):
         buffer:list = []
         switcher = { 
@@ -69,4 +60,13 @@ class Board:
         buffer.append('\r\n')
         return "".join(buffer)
 
+    @classmethod
+    def extractRowCol(self, value:str)->tuple:
+        buffer:bytes = value.strip().encode("utf-8")
+        row= buffer[0] - ord('A')
+        col = buffer[1] - ord('0') #chr()
+        if(len(buffer)>2):
+            col = col * 10 + (buffer[2] - 48)
 
+        # go start from 1 and A:
+        return (row, col-1)

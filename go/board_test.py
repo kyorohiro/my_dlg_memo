@@ -9,5 +9,6 @@ class TestBoard(unittest.TestCase):
         print("\r\n"+str(b))
         self.assertTrue(True)
 
+
 if __name__ == "__main__":
     unittest.main()
