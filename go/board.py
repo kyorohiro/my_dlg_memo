@@ -44,10 +44,10 @@ class Board:
             BoardState.WHITE:"w",
         }
 
-        for y in range(0,self.col_size):
+        for y in reversed(range(0,self.col_size)):
             for x in range(0,self.row_size):
                 if x == 0:
-                    buffer.append(str(self.row_size-y).zfill(2)+" ")
+                    buffer.append(str(y+1).zfill(2)+" ")
                 elif x > 0:
                     buffer.append(" ")
                 n = self.getState(x,y)
@@ -62,6 +62,7 @@ class Board:
             buffer.append(chr(x+ord('A')))
         buffer.append('\r\n')
         return "".join(buffer)
+
 
     @classmethod
     def extractRowCol(self, value:str)->tuple:
