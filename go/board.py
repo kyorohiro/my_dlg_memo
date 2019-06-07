@@ -52,11 +52,21 @@ class Board:
 
         for y in range(0,self.col_size):
             for x in range(0,self.row_size):
-                if x > 0:
+                if x == 0:
+                    buffer.append(str(self.row_size-y).zfill(2)+" ")
+                elif x > 0:
                     buffer.append(" ")
                 n = self.getState(x,y)
                 buffer.append(switcher.get(n, "?"))
             buffer.append('\r\n')
+        
+        buffer.append("   ")
+        for x in range(0,self.row_size):
+            if x > 0:
+                buffer.append(" ")
+            n = self.getState(x,y)
+            buffer.append(chr(x+ord('A')))
+        buffer.append('\r\n')
         return "".join(buffer)
 
 
