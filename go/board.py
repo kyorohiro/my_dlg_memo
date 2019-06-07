@@ -16,6 +16,9 @@ class BoardState(Enum):
     BLACK = 2
     NONE = 0
 
+class FormatException(Exception):
+    pass
+
 class Board:
 
     def __init__(self, row_size:int, col_size:int):
@@ -62,6 +65,8 @@ class Board:
 
     @classmethod
     def extractRowCol(self, value:str)->tuple:
+        if  not (len(value) >= 2):
+            raise FormatException()
         buffer:bytes = value.strip().encode("utf-8")
         row= buffer[0] - ord('A')
         col = buffer[1] - ord('0') #chr()
