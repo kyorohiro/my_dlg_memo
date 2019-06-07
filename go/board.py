@@ -36,6 +36,9 @@ class Board:
     def setState(self, row:int, col:int, v:BoardState):
         self.cont[self.calcIndex(row,col)] = v
 
+    def checkSettable(self, row:int, col:int):
+        return self.getState(row, col) == BoardState.NONE
+
     def __str__(self):
         buffer:list = []
         switcher = { 
