@@ -7,7 +7,9 @@ class Rule:
 
     #
     def checkSettable(self, board:Board, row:int, col:int):
-        return board.getState(row, col) == BoardState.NONE
+        return board.checkSettable(row, col)
+
+
 
   
 
