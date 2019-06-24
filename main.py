@@ -1,4 +1,3 @@
-
 from typeguard import typechecked
 from enum import Enum
 import os

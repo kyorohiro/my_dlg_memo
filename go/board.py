@@ -79,3 +79,18 @@ class Board:
 
         # go start from 1 and A:
         return (row, col-1)
+
+class GoAction:
+    def __init__(self, row:int, col:int, num:int):
+        self.col = col
+        self.row = row
+        self.num = num
+
+class GoBard(Board):
+    def __init__(self, row_size:int, col_size:int):
+        
+        pass
+
+    def putStone(self):
+        pass
+
